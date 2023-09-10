@@ -4,16 +4,17 @@ import { repositoryProviders } from './repository';
 import { IUsersRepository } from './repository/user/users.repository.interface';
 import { UserSchema } from './schemas/user/user.schema';
 import { schemas } from './schemas';
+import { DbConfigService } from './services/db-config/db-config.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'mytopsecretpassword',
-      database: 'postgres',
+      host: DbConfigService.getDbHost(),
+      port: DbConfigService.getDbPort(),
+      username: DbConfigService.getDbUsername(),
+      password: DbConfigService.getDbPassword(),
+      database: DbConfigService.getDbName(),
       entities: [...schemas],
       synchronize: true,
     }),

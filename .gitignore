@@ -4,6 +4,10 @@
 dist
 tmp
 /out-tsc
+.env
+.env.*
+/postgres-data
+!.env.example
 
 # dependencies
 node_modules
