@@ -22,6 +22,7 @@ export class OrderSchema {
   @Column() addressCountry: string;
   @OneToMany(() => OrderItemSchema, (orderItem) => orderItem.order, {
     eager: true,
+    cascade: true,
   })
   orderItems: OrderItemSchema[];
   @Column({
